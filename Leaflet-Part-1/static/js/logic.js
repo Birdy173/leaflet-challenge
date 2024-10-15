@@ -25,7 +25,10 @@ let url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.ge
 // Fetch the data using D3
 d3.json(url).then(function(data) {
     // Create a marker cluster group
-    let markers = L.markerClusterGroup();
+    let markers = L.markerClusterGroup({
+        disableClusteringAtZoom: 3
+    }
+    );
 
     // Loop through each feature in the GeoJSON
     data.features.forEach(feature => {
